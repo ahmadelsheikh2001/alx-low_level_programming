@@ -1,40 +1,44 @@
-#include <stdio.h>
-
+#include "main.h"
 /**
- * main - prints the first 98 Fibonacci numbers
- * starting with 1 and 2, followed by a new line
- * Return: 0
+ * main - main function
+ * Return: 0 if the program finish whitout errors
  */
-
-int main(void)
+int	main(void)
 {
-	unsigned long long int i, j, k;
-	unsigned long long int i1, i2, j1, j2, k1, k2;
+	int			i;
+	long int	fib1, fib2, fib3, fib4, next, next1;
 
-	i = 0;
-	j = 1;
-	k = 1;
-
-	for (i = 0; i < 90; i += 2)
+	fib1 = 1;
+	fib2 = 2;
+	i = 2;
+	printf("%ld, %ld, ", fib1, fib2);
+	while (i < 91)
 	{
-		i1 = j / 10000000000;
-		i2 = j % 10000000000;
-		j1 = k / 10000000000;
-		j2 = k % 10000000000;
-
-		k = j + k / 10000000000;
-		j = j + k - (k / 10000000000) * 10000000000;
-
-		printf("%llu%llu, %llu%llu, ", i1, i2, j1, j2);
+		next = fib1 + fib2;
+		printf("%ld, ", next);
+		fib1 = fib2;
+		fib2 = next;
+		i++;
 	}
-
-	i1 = j / 10000000000;
-	i2 = j % 10000000000;
-	j1 = k / 10000000000;
-	j2 = k % 10000000000;
-
-	printf("%llu%llu, %llu%llu\n", i1, i2, j1, j2);
-
+	fib3 = fib1 % 1000000000;
+	fib1 = fib1 / 1000000000;
+	fib4 = fib2 % 1000000000;
+	fib2 = fib2 / 1000000000;
+	while (i < 98)
+	{
+		next = fib1 + fib2;
+		next += (fib3 + fib4) / 1000000000;
+		next1 = (fib3 + fib4) % 1000000000;
+		printf("%ld", next);
+		printf("%ld", next1);
+		if (i != 97)
+			printf(", ");
+		fib1 = fib2;
+		fib3 = fib4;
+		fib2 = next;
+		fib4 = next1;
+		i++;
+	}
+	printf("\n");
 	return (0);
 }
-
