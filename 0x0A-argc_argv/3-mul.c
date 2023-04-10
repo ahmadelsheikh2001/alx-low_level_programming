@@ -2,25 +2,25 @@
 #include <stdlib.h>
 
 /**
- * main - print multiplication of two numbers
- * @argc: number of arguments
- * @argv: arguments of vector
- * Return: 0 if success
+ * main - multiplies two numbers.
+ * @argc: argument count
+ * @argv: arguments
+ *
+ * Return: 0
  */
-int main(int argc, char *argv[])
+int main(int argc, char **argv)
 {
-	int i, res = 1;
+	int x, y;
 
-	if (argc < 3 || argc > 3)
-		printf("Error\n");
-	else
+	if (argc < 3)
 	{
-		for (i = 1; i < argc; i++)
-		{
-			res *= atoi(argv[i]);
-		}
-		printf("%d\n", res);
+		printf("Error\n");
+		return (1);
 	}
+
+	x = atoi(argv[1]);
+	y = atoi(argv[2]);
+	printf("%d\n", x * y);
 
 	return (0);
 }
